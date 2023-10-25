@@ -1,2 +1,2 @@
-# firebase-template
-A template for making sveltekit/firebase projects.
+# svelte-firebase-auth
+Auth with firebase for svelte projects.
