@@ -1,4 +1,4 @@
-import { signInWithPopup, type Auth, type AuthProvider } from "@firebase/auth";
+import { type Auth, type AuthProvider, signInWithPopup } from "@firebase/auth";
 
 export interface SignedInUser {
   signedIn: true;
