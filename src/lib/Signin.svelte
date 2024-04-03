@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import type { User } from "./auth";
   import {
     onAuthStateChanged,
@@ -12,19 +12,25 @@
   export let auth: Auth;
   export let googleAuthProvider: GoogleAuthProvider;
   const dispatchEvent = createEventDispatcher();
-  onAuthStateChanged(auth, async (user) => {
-    if (user && user.email) {
-      const uid = user.uid;
-      const name = user.displayName || "Unknown Name";
-      const email = user.email;
-      const photo = user.photoURL || "";
-      const last = new Date().getTime();
-      me = { signedIn: true, uid, email, name, photo, last };
-    } else {
-      me = { signedIn: false };
-    }
-    dispatchEvent("user_changed", me);
-  });
+  let unsubAuth = undefined;
+  onMount(() => {
+		unsubAuth = onAuthStateChanged(auth, async (user) => {
+			if (user && user.email) {
+				const uid = user.uid;
+				const name = user.displayName || "Unknown Name";
+				const email = user.email;
+				const photo = user.photoURL || "";
+				const last = new Date().getTime();
+				me = { signedIn: true, uid, email, name, photo, last };
+			} else {
+				me = { signedIn: false };
+			}
+			dispatchEvent("user_changed", me);
+		});
+	});
+	onDestroy(() => {
+		unsubAuth && unsubAuth();
+	});
   function login() {
     signInWithPopup(auth, googleAuthProvider)
       .then((result) => {
