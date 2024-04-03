@@ -1,21 +1,22 @@
 {
   "name": "@ourway/svelte-firebase-auth",
-  "version": "0.0.1",
-  "description": "A template for making sveltekit/firebase projects.",
-  "author": "Alex Nicolaou",
+  "version": "0.0.2",
+  "description": "A library for using firebase authentication in svelte projects.",
+  "author": "Andrew Blackledge, Alex Nicolaou",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/anicolao/firebase-template.git"
+    "url": "git+ssh://git@github.com/AndrewBlackledge/svelte-firebase-auth.git"
   },
   "keywords": [
     "firebase",
+    "auth",
     "svelte"
   ],
-  "license": "MIT",
+  "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/anicolao/firebase-template/issues"
+    "url": "https://github.com/AndrewBlackledge/svelte-firebase-auth/issues"
   },
-  "homepage": "https://github.com/anicolao/firebase-template#readme",
+  "homepage": "https://github.com/AndrewBlackledge/svelte-firebase-auth#readme",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
